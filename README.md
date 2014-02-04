@@ -30,6 +30,9 @@ based on http://forrst.com/posts/Sass_Compass_Mixin_for_SVG_Background_Image_Fal
 }
 ```
 ### Usage
+
 @include svg-bg(imagename, left, top);
-inline images
+
+#### with inline images
+  
 @include svg-bg(imagename, left, top, $inline: true);
