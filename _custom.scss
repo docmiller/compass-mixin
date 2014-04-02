@@ -1,7 +1,7 @@
 //
-// SVG with Fallback images
-//
+// SVG Images with Fallback to PNG images
 // modernizr class and Sass content inject for fallback code
+//
 @mixin no-svg {
   .no-svg & { @content }
 }
@@ -21,4 +21,56 @@
       background: image-url($filename + $extension) $left $top no-repeat;
     }
   }
+}
+
+//
+// Gradients
+//
+
+
+//primary gradient
+@mixin primary-gradient {
+  background: $primary-color; //fallback
+  @include background-image(linear-gradient($primary-color, tint($primary-color,50)));
+}
+@mixin secondary-gradient {
+  background: $secondary-color; //fallback
+  @include background-image(linear-gradient($secondary-color, tint($secondary-color,50)));
+}
+@mixin menu-gradient {
+  background: $menu-color; //fallback
+  @include background-image(linear-gradient($menu-color, tint($menu-color,50)));
+}
+
+//
+// CSS Triangles
+//
+%arrow-box {
+  width: 0; 
+  height: 0; 
+}
+@mixin arrow-up ($arrow-size: 5px) {
+  @extend %arrow-box;
+	border-left: $arrow-size solid transparent;
+	border-right: $arrow-size solid transparent;
+	border-bottom: $arrow-size solid $primary-color;
+}
+
+@mixin arrow-down ($arrow-size: 5px) {
+  @extend %arrow-box;
+	border-left: $arrow-size solid transparent;
+	border-right: $arrow-size solid transparent;
+	border-top: $arrow-size solid $primary-color;
+}
+@mixin arrow-right ($arrow-size: 5px) {
+  @extend %arrow-box;
+	border-top: $arrow-size solid transparent;
+	border-bottom: $arrow-size solid transparent;
+	border-left: $arrow-size solid $primary-color;
+}
+@mixin arrow-left ($arrow-size: 5px) {
+  @extend %arrow-box;
+	border-top: $arrow-size solid transparent;
+	border-bottom: $arrow-size solid transparent;
+	border-right: $arrow-size solid $primary-color;
 }
