@@ -23,6 +23,23 @@
   }
 }
 
+//Multicolumn automatic Zen grids
+@media all and (min-width: 480px) {
+	@for $zengrid from 1 through 4 {
+		.zen-grid-#{$zengrid}col {
+			$zen-column-count: $zengrid;
+			@for $i from 1 through $zen-column-count {
+				.zen-grid-#{$i} {
+					@include zen-grid-item(1, $i);
+					@if $i == 1 {
+						@include zen-clear();
+					}
+				}
+			}
+		}
+	}
+}
+
 //
 // Gradients
 //
